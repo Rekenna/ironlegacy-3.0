@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = 'c3c6f934958146b8787b9186d0a6b7593c0b769670c25266ef43f593951f7535bf804a438047b6539f010c8f34db4857dd57073b529da5fb9c76895efd80a027'
+  # config.secret_key = '5308536d6f0eaa32af25b7f7cec721760e94a44219d0389e893466179a96902306cae3375320d820845cc8380fa78fa231662ec25841097e893b28ff28b9f2f1'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -30,7 +30,7 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [ :email ]
-
+  config.authentication_keys = [ :login ]
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
@@ -97,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'fa79d341761ed266e05bb235a9bf0f4165ac7edf5c5a556a596f5e7eb81e6f556a969adb767e86c320d4f8ff5352fbab241cd0dcf3de858f825da8d53ef4ecbd'
+  # config.pepper = '1f7518754e48feb1a430df045d813d910064474868bc5ca8b87c4de47376fdeac3171504e866b4682aa4a008d8cb631ee103e9d4ca9296f0c3fc04e079f6fb75'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -140,7 +140,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..128
+  config.password_length = 5..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -190,7 +190,7 @@ Devise.setup do |config|
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
   config.reset_password_within = 6.hours
-
+  
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
   # :sha1, :sha512 or encryptors from others authentication tools as :clearance_sha1,

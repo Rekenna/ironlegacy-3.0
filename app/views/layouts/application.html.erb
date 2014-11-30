@@ -1,35 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ironlegacy</title>
+  <title>Iron Legacy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
-
-<% flash.each do |key, value| %>
-  <div class="error alert-<%= key %>">
-      <ul>
-        <li>
-          <%= value %>
-        </li>
-        </br>
-        <li style="font-size: 70%">Click to Dismiss</li>
-      </ul>
+<header>
+  <div class="trigger"></div>
+  <div class="headercontainer">
+    <div class="Brand">
+      <%= image_tag('legacy2.svg') %>
+      <a class="title" href="/">
+      Iron Legacy
+      </a>
+    </div>
+    <div class="User">
+      <% if user_signed_in? %>
+        <div class="usersettings">
+          <%= current_user.username %>
+          <span class="tooltipped hint--bottom" data-hint="Edit Profile"><%= link_to '', main_app.edit_user_registration_path, :class => 'setting fa fa-cog' %></span>
+          <span class="tooltipped hint--bottom" data-hint="Logout"><%= link_to "", main_app.destroy_user_session_path, method: :delete, :class => 'setting fa fa-sign-out' %></span>
+        </div>
+      <% else %>
+        <%= link_to "Apply", main_app.new_user_registration_path, :class => 'apply'  %>
+        <%= link_to "Login", main_app.new_user_session_path, :class => 'login'  %>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</header>
+
+
+<main>
+
+<section class="content">
+
+
+<%= render 'layouts/messages' %>
 
 <%= yield %>
 
+</section>
+
+
+</main>
+
+<footer>
+  <div class="footercontent">
+  <p><a href="http://rekenna.com/">&copy; 2014 Ryan McKenna & BlackHearth Studios</a></p>
+  <p>World of Warcraft™ and Blizzard Entertainment™ are all trademarks or registered trademarks of Blizzard Entertainment in the United States and/or other countries. These terms and all related materials, logos, and images are copyright © Blizzard Entertainment. This site is in no way associated with or endorsed by Blizzard Entertainment™.</p>
+  </div>
+</footer>
+
+<nav>
+<div class="navcontent">
+<% if user_signed_in? %>
+	<div class="imgwrapper">
+	<span class="avatarthumb"><%= image_tag(current_user.avatar.url(:medium)) %></span>
+	</div>
+	<h1 class="username">
+  	<%= current_user.username %>
+  	</h1>
+  	<h2>
+  	<% if current_user.admin? %>
+  	 [admin]
+  	<% else %>
+  	 [member]
+  	<% end %>
+  	</h2>
+  <%= link_to 'Edit profile', main_app.edit_user_registration_path, :class => 'edit' %>
+  <%= link_to "Logout", main_app.destroy_user_session_path, method: :delete, :class => 'logout'  %>
+  <%= link_to "News", main_app.root_path, :class => "navlink" %>
+  <%= link_to "Archive", main_app.archive_index_path,  :class => "navlink" %>
+  <%= link_to "Forums", main_app.forem_path,  :class => "navlink" %>
+<% else %>
+  <%= link_to "Sign up", main_app.new_user_registration_path,  :class => "navlink" %>
+  <%= link_to "Login", main_app.new_user_session_path,  :class => "navlink" %>
+  <%= link_to "News", main_app.root_path, :class => "navlink" %>
+  <%= link_to "Archive", main_app.archive_index_path, :class => "navlink" %>
+  <%= link_to "Forums", main_app.forem_path, :class => "navlink" %>
+<% end %>
+</div>
+</nav>
+
+<script src="/assets/application.js"></script>
 </body>
 </html>

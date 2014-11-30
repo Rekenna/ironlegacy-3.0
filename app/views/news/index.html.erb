@@ -1,0 +1,55 @@
+<div class="news">
+
+<div class="banner">
+  <div class="wrap">
+
+  <iframe src="http://www.twitch.tv/raegwyn/embed" frameborder="0" scrolling="no"></iframe>
+
+  </div>
+</div>
+
+<div class="subheader">
+  <div class="wrap">
+    <div class="tab news active">News</div>
+    <div class="tab about">About Us</div>
+    <div class="tab recruitment">Recruitment</div>
+  </div>
+</div>
+
+<section class="area news-section">
+  <div class="wrap">
+    <% @news.take(4).each do |news| %>
+    <div class="post">
+      <h1><%= news.title %></h1>
+      <p><%= news.created_at.strftime("Created %B %d, %Y.") %></p>
+      <p><%= news.content %></p>
+      <% if current_user.try(:admin?) %>
+      <h4>Controls</h4>
+      <div class="controls"><%= link_to 'Edit', edit_news_path(news) %><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        <% end %>
+      </div>
+    <% end %>
+    <%= link_to "View More Posts", archive_index_path, :class => 'more' %>
+  </div>
+</section>
+
+<section class="area about-section hidden">
+  <div class="wrap">
+  About
+  </div>
+</section>
+
+<section class="area recruitment-section hidden">
+  <div class="wrap">
+  Recruitment
+  <%= link_to "Apply", root_path, :class => 'more' %>
+  </div>
+</section>
+
+
+<% if current_user.try(:admin?) %>
+<%= link_to '', new_news_path, :class => "floating tooltipped hint--top" %>
+<% end %>
+
+
+</div>

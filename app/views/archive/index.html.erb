@@ -1,0 +1,19 @@
+<section class="area news-section">
+  <div class="wrap">
+    <% @news.each do |news| %>
+    <div class="post">
+      <h1 style="letter-spacing:1px"><%= news.title %></h1>
+      <p><%= news.created_at.strftime("Created %B %d, %Y.") %></p>
+      <p><%= news.content %></p>
+      <% if current_user.try(:admin?) %>
+      <h4>Controls</h4>
+      <div class="controls"><%= link_to 'Edit', edit_news_path(news) %><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<% if current_user.try(:admin?) %>
+<%= link_to '', new_news_path, :class => "floating tooltipped hint--top" %>
+<% end %>

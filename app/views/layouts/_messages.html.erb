@@ -1,0 +1,11 @@
+<% flash.each do |key, value| %>
+  <div class="error alert-<%= key %>">
+      <ul>
+        <li>
+          <%= value %>
+        </li>
+        </br>
+        <li style="font-size: 70%">Click to Dismiss</li>
+      </ul>
+  </div>
+<% end %>

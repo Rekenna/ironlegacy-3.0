@@ -26,6 +26,15 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'devise'
 gem "rspec-rails", "~> 2.14.0"
+gem 'forem', :github => "radar/forem", :branch => "rails4"
+gem 'forem-gfm_formatter'
+gem 'kaminari'
+
+gem 'paperclip', '~> 4.1'
+
+gem 'bourbon'
+gem "font-awesome-rails"
+gem 'quiet_assets', group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

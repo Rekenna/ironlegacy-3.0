@@ -1,0 +1,186 @@
+.transparent{
+	background-color: transparent;
+}
+section{
+	display: block;
+	z-index: $content-z;
+}
+.hidden{
+	display: hidden;
+}
+
+.news h1{
+	font-size: 25px;
+	letter-spacing: 1px;
+}
+
+.news .banner{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #5c5757;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repat;
+	@include display(flex);
+	@include flex-direction(column);
+	@include align-items(center);
+	iframe{
+		//Ratio Width -> Height: 1.75
+		height: 360px;
+		width: 630px;
+		@media screen and (max-width: $break-tablet){
+			height: 250px;
+			width: 437.5px;
+		}
+		@media screen and (max-width: $break-phone){
+			height: 150px;
+			width: 262.5px;
+		}
+	}
+}
+
+.post{
+	background-color: #eee;
+	padding: 10px;
+	margin: 10px;
+	font-family: $post-font;
+	p{
+		padding: 10px;
+	}
+}
+
+.news .subheader{
+	/* -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	.wrap{
+		max-width: 960px;
+		margin: auto;
+		text-align: center;
+		@include display(flex);
+		@include flex-direction(row);
+		@include align-items(center);
+		div{
+			@include flex(1);
+			color: $main-button-color;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		.tab{
+			cursor: pointer;
+			box-sizing: border-box;
+			border-bottom: 5px solid transparent;
+			font-size: 15px;
+			@include transition(background-color .5s linear);
+			@media screen and (min-width: $break-tablet){
+				font-size: 20px;
+			}
+			&:hover{
+				background-color: lighten($main-button-color, 60);
+			}
+		}
+		.active{
+			border-bottom: 5px solid $main-button-color;
+			background-color: lighten($main-button-color, 60);
+		}
+	}
+}
+
+.news .area{
+	padding: 10px;
+}
+
+.news .information{
+	background-color: #FAFAFA;
+	box-shadow: 0px 0px 5px 2px gray;
+	border-bottom-right-radius: 20px;
+	border-top-left-radius: 21px;
+	h3{
+		background-color: $main-button-color;
+		font-family: $post-font;
+		color: white;
+		font-size: 24px;
+		padding: 10px;
+		border-top-left-radius: 20px;
+		letter-spacing: 2px;
+	}
+}
+
+.news .information .recruitment{
+	h4{
+		text-align: center;
+		font-size: 18px;
+		padding: 4px;
+		border-bottom: 1px solid #474747;
+	}
+	.recruitcontainer{
+		@include display(flex);
+		@include flex-direction(row);
+		@include align-items(center);
+		div{
+			@include flex(1);
+		}
+		.icon{
+			width: 60px;
+		}
+		.spec{
+			@include flex(2);
+			text-align: left;
+			font-size: 15px;
+			p{
+				padding: 5px;
+				&:before{
+					content: "- "
+				}
+			}
+		}
+	}
+	.warrior{
+		background-color: #7A6656;
+	}
+	.paladin{
+		background-color: #FF7593;
+	}
+	.apply{
+		text-align: center;
+		background-color: #6CC75B;
+		color: white;
+		width: 50%;
+		display: block;
+		margin: auto;
+		padding: 15px;
+	}
+}
+
+.news .posts{
+	.post{
+		padding: 10px;
+		font-family: $post-font;
+	}
+}
+
+.area .wrap .more{
+	background-color: #6CC75B;
+	padding: 10px;
+	margin: auto;
+	width: 80%;
+	display: block;
+	text-align: center;
+	color: white;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.news .contentwrapper{
+	margin: auto;
+	margin-top: 60px;
+	@include display(flex);
+	@include flex-direction(row);
+	div{
+		@include flex(1);
+		margin: 10px;
+	}
+	.posts{
+		@include flex(2);
+	}
+}
