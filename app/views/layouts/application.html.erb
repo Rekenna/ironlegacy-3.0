@@ -4,6 +4,8 @@
   <title>Iron Legacy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -85,7 +87,5 @@
 </div>
 </nav>
 
-<script type="text/javascript" src="assets/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="assets/application.js"></script>
 </body>
 </html>
