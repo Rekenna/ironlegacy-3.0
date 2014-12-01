@@ -7,7 +7,7 @@ html,body{
 
 // Scrollbar stuff
 .menu-shown{
-	transform: translateX(200px);
+	@include transform(translateX(200px));
 }
 main{
 	color: black;
