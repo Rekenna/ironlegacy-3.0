@@ -12,7 +12,7 @@ html,body{
 main{
 	color: black;
 	background-color: $main-background-color;
-	@include transition(transform 1.0s ease-in-out);
+	@include transition(all 1.0s ease-in-out);
 	width: auto;
 	z-index: $content-z;
 	overflow-y: hidden;
