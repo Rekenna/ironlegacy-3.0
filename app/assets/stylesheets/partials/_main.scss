@@ -53,10 +53,17 @@ main{
 	h2{
 		text-align: center;
 		font-size: 25px;
+		font-family: $post-font;
 	}
 }
 .recruitment-secion{
 	@extend .about-section;
+	h1{
+		text-align: center;
+	}
+	.times{
+		text-align: left;
+	}
 }
 
 // main::-webkit-scrollbar {
