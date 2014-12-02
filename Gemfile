@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'devise'
 gem "rspec-rails", "~> 2.14.0"
 gem 'forem', :github => "radar/forem", :branch => "rails4"
-gem 'forem-gfm_formatter'
+gem 'forem-redcarpet', :git => "git://github.com/radar/forem-redcarpet"
 gem 'kaminari'
 
 gem 'paperclip', '~> 4.1'

@@ -169,3 +169,27 @@ tr .forum{
 		text-decoration: underline;
 	}
 }
+
+.contents{
+	position: relative;
+	margin: auto;
+}
+div.row{
+	position: relative;
+	max-width: 1080px;
+	margin: auto;
+}
+.contents{
+	max-width: 1080px;
+	margin: auto;
+	.contents{
+		position: relative;
+		overflow: none;
+	}
+	p{
+		text-align: left;
+		max-width: 800px;
+		padding-right: 20px;
+		box-sizing:border-box;
+	}
+}
