@@ -1,5 +1,5 @@
 Forem.user_class = "User"
-Forem.email_from_address = "ironlegacy.herokuapp.com"
+Forem.email_from_address = "heroku.com"
 # If you do not want to use gravatar for avatars then specify the method to use here:
 Forem.avatar_user_method = 'forem_avatar'
 Forem.per_page = 20
