@@ -32,6 +32,8 @@ gem 'kaminari'
 
 gem 'paperclip', '~> 4.1'
 
+gem 'mail'
+
 gem 'bourbon'
 gem "font-awesome-rails"
 gem 'quiet_assets', group: :development

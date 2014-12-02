@@ -208,6 +208,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mail
   paperclip (~> 4.1)
   pg
   quiet_assets
