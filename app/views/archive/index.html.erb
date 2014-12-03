@@ -1,8 +1,12 @@
 <section class="area news-section">
   <div class="wrap">
     <% @news.each do |news| %>
-    <div class="post">
-      <h1 style="letter-spacing:1px"><%= news.title %></h1>
+      <div class="post">
+      <% if news.image_embed != '' %>
+        <a class="embedly-card" data-card-theme="dark" href="<%= news.image_embed %>"></a>
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+      <% end %>
+      <h1><%= news.title %></h1>
       <p><%= news.created_at.strftime("Created %B %d, %Y.") %></p>
       <p><%= news.content %></p>
       <% if current_user.try(:admin?) %>
