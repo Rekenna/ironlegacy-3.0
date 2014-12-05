@@ -1,13 +1,18 @@
 <section class="area news-section">
   <div class="wrap">
     <% @news.each do |news| %>
-      <div class="post">
-      <% if news.image_embed != '' %>
+    <div class="post">
+      <h1 style="text-align:center"><%= news.title %></h1>
+      <% if news.youtube_embed%>
+        <div class="flex">
+        <iframe style="margin:auto" src="<%= news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+      <% end %>
+      <% if news.image_embed%>
         <a class="embedly-card" data-card-theme="dark" href="<%= news.image_embed %>"></a>
 <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
       <% end %>
-      <h1><%= news.title %></h1>
-      <p><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T') %></p>
+      <p><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
       <p><%= news.content %></p>
       <% if current_user.try(:admin?) %>
       <h4>Controls</h4>

@@ -35,18 +35,28 @@ section{
 	@include display(flex);
 	@include flex-direction(column);
 	@include align-items(center);
-	iframe{
-		//Ratio Width -> Height: 1.75
-		height: 360px;
-		width: 630px;
-		@media screen and (max-width: $break-tablet){
-			height: 250px;
-			width: 437.5px;
-		}
-		@media screen and (max-width: $break-phone){
-			height: 150px;
-			width: 262.5px;
-		}
+}
+
+.flex{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	@include display(flex);
+	@include flex-direction(column);
+	@include align-items(center);
+}
+
+
+iframe{
+	//Ratio Width -> Height: 1.75
+	height: 360px;
+	width: 630px;
+	@media screen and (max-width: $break-tablet){
+		height: 250px;
+		width: 437.5px;
+	}
+	@media screen and (max-width: $break-phone){
+		height: 150px;
+		width: 262.5px;
 	}
 }
 

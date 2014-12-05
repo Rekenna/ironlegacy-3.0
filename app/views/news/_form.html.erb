@@ -16,6 +16,13 @@
     <%= f.text_field :title %>
   </div>
 
+  <h2>Choose to Embed either Youtube or Imgur, not both!</h2>
+
+  <div class="field">
+    <%= f.label "Video Embed (Youtube Link)" %><br>
+    <%= f.text_field :youtube_embed %>
+  </div>
+
   <div class="field">
     <%= f.label "Image Embed (Imgur Link)" %><br>
     <%= f.text_field :image_embed %>
