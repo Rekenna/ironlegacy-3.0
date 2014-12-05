@@ -18,7 +18,7 @@
 
 <section class="area news-section">
   <div class="wrap">
-    <% @news.take(4).each do |news| %>
+    <% @news.take(3).each do |news| %>
     <div class="post">
       <% if news.image_embed != '' %>
         <a class="embedly-card" data-card-theme="dark" href="<%= news.image_embed %>"></a>
