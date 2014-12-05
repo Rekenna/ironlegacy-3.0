@@ -10,14 +10,25 @@ section{
 }
 
 .news h1{
-	font-size: 25px;
+	font-size: 45px;
 	letter-spacing: 1px;
+}
+
+.icons{
+	a{
+		padding: 30px;
+		font-size: 55px;
+		color: white;
+		&:hover{
+			color: black;
+		}
+	}
 }
 
 .news .banner{
 	padding-top: 10px;
 	padding-bottom: 10px;
-	background: #5c5757;
+	background: url(channelart.jpg);
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repat;
