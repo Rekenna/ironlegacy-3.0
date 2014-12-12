@@ -22,12 +22,12 @@
     <div class="post">
       <h1 style="text-align:center"><%= news.title %></h1>
       <p style="text-align:center"><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
-      <% if news.youtube_embed != ""%>
+      <% if news.youtube_embed || news.youtube_embed != "" %>
         <div class="flex">
         <iframe style="margin:auto" src="<%= news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
         </div>
       <% end %>
-      <% if news.image_embed != ""%>
+      <% if news.image_embed || news.image_embed != "" %>
         <a class="embedly-card" data-card-theme="dark" href="<%= news.image_embed %>"></a>
 <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
       <% end %>
