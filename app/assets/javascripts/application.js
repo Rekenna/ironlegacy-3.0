@@ -18,7 +18,6 @@
 //= require sweet-alert.min
 //= require Markdown.Converter
 //= require Markdown.Sanitizer
-//= require_tree .
 
 $(".trigger").html("<i class='fa fa-bars'></i>");
 $(".floating").html("<i class='fa fa-plus'></i>").attr("data-hint", 'Create Post');
