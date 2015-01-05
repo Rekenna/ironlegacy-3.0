@@ -9,9 +9,6 @@
         <% else %>
           <%= link_to_if Forem.user_profile_links, post.user.forem_name, [main_app, post.user] %>
           </br>
-        <% if current_user.try(:admin?) %>
-          <p>[Admin]</p>
-          <% end %>
           <p><%= post_time_tag(post) %></p>
         <% end %>
       </div>
