@@ -12,12 +12,12 @@
  *
 
 *= require 'forem/base'
-*= require_self
-*/
+ *= require_self
+ */
 
 //Normalize & Sweet Alerts
-@import "normalize.css";
-@import "sweet-alert.css";
+// @import "normalize.css";
+// @import "sweet-alert.css";
 
 // Gem Imports
 @import "bourbon";
