@@ -57,7 +57,7 @@
     var Effect = {
 
         // Effect delay
-        duration: 500,
+        duration: 700,
 
         show: function(e) {
             
@@ -75,10 +75,16 @@
 
             // Get click coordinate and element witdh
             var pos         = offset(el);
-            var relativeY   = (e.pageY - pos.top) - 10;
-            var relativeX   = (e.pageX - pos.left) - 10;
-            // var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
-            var scale = 'scale(15)';
+            var relativeY   = (e.pageY - pos.top);
+            var relativeX   = (e.pageX - pos.left);
+            var scale       = 'scale('+((el.clientWidth / 100) * 2.5)+')';
+            // var scale = 'scale(15)';
+          
+            // Support for touch devices
+            if ('touches' in e) {
+              relativeY   = (e.touches[0].pageY - pos.top);
+              relativeX   = (e.touches[0].pageX - pos.left);
+            }
 
             // Attach data to element
             ripple.setAttribute('data-hold', Date.now());
@@ -205,13 +211,12 @@
                     wrapper.className = el.className + ' waves-input-wrapper';
 
                     var elementStyle = el.getAttribute('style');
-                    var dimensionStyle = 'width:'+el.offsetWidth+'px;height:'+el.clientHeight+'px;';
 
                     if (!elementStyle) {
                         elementStyle = '';
                     }
 
-                    wrapper.setAttribute('style', dimensionStyle+elementStyle);
+                    wrapper.setAttribute('style', elementStyle);
                     
                     el.className = 'waves-button-input';
                     el.removeAttribute('style');
@@ -239,15 +244,24 @@
 
         Array.prototype.forEach.call($$('.waves-effect'), function(i) {
 
-            i.addEventListener('mousedown', Effect.show, false);
-            i.addEventListener('mouseup', Effect.hide, false);
-            i.addEventListener('mouseleave', Effect.hide, false);
+        if ('ontouchstart' in window) {
+          i.addEventListener('mouseup', Effect.hide, false);                      i.addEventListener('touchstart', Effect.show, false);
+          i.addEventListener('mouseleave', Effect.hide, false);                   i.addEventListener('touchend',   Effect.hide, false);
+          i.addEventListener('touchcancel',   Effect.hide, false);
+        } else {
+          i.addEventListener('mousedown', Effect.show, false);
+          i.addEventListener('mouseup', Effect.hide, false);
+          i.addEventListener('mouseleave', Effect.hide, false);
+        }
 
         });
 
     };
 
     window.Waves = Waves;
-    Waves.displayEffect();
+
+    $(document).ready(function() {
+      Waves.displayEffect();
+    });
 
 })(window);

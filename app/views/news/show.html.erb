@@ -1,14 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @news.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @news.content %>
-</p>
-
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+<span class="news">
+<div class="post">
+    	<div class="post-header">
+    		<h1><%= @news.title %></h1>
+    		<p style="text-align:center"><%= @news.created_at.strftime("Posted %B %d, %Y at ") + @news.created_at.strftime('%T ') %><a href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
+    	</div>
+    	<div class="post-body">
+    		 <% if @news.youtube_embed %>
+		        <% if @news.youtube_embed != "" %>
+		        	<iframe style="margin:auto" src="<%= @news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
+		        <% end %>
+		     <% end %>
+		     <% if @news.image_embed%>
+		        <% if @news.image_embed != "" %>
+		        	<a class="embedly-card" data-card-theme="dark" href="<%= @news.image_embed %>"></a>
+					<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+		     	<% end %>
+		     <% end %>
+		     <div class="post-text">
+		     <%= markdown(@news.content) %>
+		     </div>
+    	</div>
+    	<%= link_to 'Continue Editing', edit_news_path(@news), :class => "more" %>
+    	<%= link_to 'Back to News', news_index_path, :class => "more" %>
+</span>

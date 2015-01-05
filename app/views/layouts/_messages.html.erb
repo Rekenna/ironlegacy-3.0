@@ -1,5 +1,15 @@
 <% flash.each do |key, value| %>
-  <div class="error alert-<%= key %>">
+
+  <% if key == "alert" %>
+  	<script type="text/javascript">
+  		swal("Uh-oh..","<%= value %>", "error");
+  	</script>
+  <% else %>
+    <script type="text/javascript">
+      swal("Sweet!","<%= value %>", "success");
+    </script>
+  <% end %>
+<!--   <div class="error alert-<%= key %>">
       <ul>
         <li>
           <%= value %>
@@ -7,5 +17,5 @@
         </br>
         <li style="font-size: 70%">Click to Dismiss</li>
       </ul>
-  </div>
+  </div> -->
 <% end %>

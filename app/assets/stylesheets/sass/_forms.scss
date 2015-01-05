@@ -1,0 +1,166 @@
+.edit_h1{
+	text-align: center;
+	font-family: $roboto;
+	color: #333;
+}
+.edit_h2{
+	@extend .edit_h1;
+	font-size: 90%;
+	border-bottom: #F7F7F7 solid 2px;
+	max-width: 800px;
+	margin: auto;
+	padding: 2px;
+	margin-top: 5px;
+}
+.field{
+	max-width: 800px;
+	margin: auto;
+	font-family: $roboto;
+	color: #333;
+	label{
+		font-size: 90%;
+		a{
+			color: $color1;
+			&:hover{
+				color: $color2;
+			}
+		}
+	}
+	input{
+		border: none;
+		border-bottom: 1px solid #333;
+		width: 100%;
+		font-size: 120%;
+		margin-bottom: 10px;
+	}
+	textarea{
+		width: 100%;
+		resize: none;
+		min-height: 400px;
+	}
+}
+.remember{
+	@include display(flex);
+	@include align-items(center);
+	@include flex-direction(row);
+	@include justify-content(flex-start);
+	input[type="checkbox"]{
+		width: 50px;
+		margin: 0;
+		padding: 0;
+		border: none;
+		border: 2px solid #333;
+		border-radius: 0px;
+		background-color: #fff;
+	}
+	label{
+		width: 100%;
+	}
+}
+
+.actions{
+	max-width: 800px;
+	margin: auto;
+}
+.submit{
+	background-color: $color2;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 6px;
+	margin: auto;
+	width: 100%;
+	box-sizing: border-box;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+a.cancel{
+	background-color: $color4;
+	text-decoration: none;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+	padding: 6px;
+	margin: auto;
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+
+.login{
+	h2, h3{
+		text-align: center;
+		color: #333;
+		font-family: $raleway;
+	}
+	p{
+		max-width: 800px;
+		margin: auto;
+		text-align: center;
+		font-family: $roboto;
+		a{	
+			text-decoration: none;
+			font-family: $roboto;
+			padding-left: 10px;
+			font-size: 14px;
+			color: #333;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+	.links{
+		border-top: 2px solid #333;
+		margin-top: 5px;
+	}
+}
+
+
+.simple_form{
+	div{
+		@extend .field;
+	}
+	input[type="submit"]{
+		@extend .submit;
+		margin: auto;
+		display: block;
+		width: 50%;
+	}
+}
+
+.preview_wrapper .field{
+	@include display(flex);
+	@include align-items(stetch);
+	@include flex-direction(row);
+	@include justify-content(flex-start);
+	margin-bottom: 10px;
+	div, textarea{
+		// border: 2px solid blue;
+		width: 100%;
+		display: block;
+		
+		height: 400px;
+	}
+	label{
+		width: 100%;
+		display: block;
+	}
+	div{
+		padding: 2px 5px 2px 5px;
+		width: 100%;
+		resize: none;
+		overflow-x: none;
+		overflow-y: auto;
+		// min-height: 400px;
+		img{
+			max-width: 100%;
+			height: auto;
+			margin: auto;
+		}
+	}
+	@media screen and (max-width: $phone){
+		@include flex-direction(column);
+	}
+}

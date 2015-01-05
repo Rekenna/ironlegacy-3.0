@@ -1,92 +1,35 @@
-<div class="news">
+<span class="news">
 
-<div class="banner">
-  <div class="wrap">
+	<% if current_user.try(:admin?) %>
+	<%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_news_path, :class => "create" %>
+	<% end %>
 
-  <iframe src="https://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf?channel=lolgrubs" frameborder="0" scrolling="no"></iframe>
-  </div>
-  <p class="icons"><a href="https://www.youtube.com/channel/UCGHhRWbMc85AgAxENPq-P7w"><i class="fa fa-youtube"></i></a><a href="https://plus.google.com/102911008626543772964" rel="publisher"><i class="fa fa-google-plus-square"></i></a></p>
-</div>
-
-<div class="subheader">
-  <div class="wrap">
-    <div class="tab news active">News</div>
-    <div class="tab about">About Us</div>
-    <div class="tab recruitment">Recruitment</div>
-  </div>
-</div>
-
-<section class="area news-section">
-  <div class="wrap">
     <% @news.take(3).each do |news| %>
     <div class="post">
-      <h1 style="text-align:center"><%= news.title %></h1>
-      <p style="text-align:center"><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
-      <% if news.youtube_embed %>
-        <% if news.youtube_embed != "" %>
-        <div class="flex">
-        <iframe style="margin:auto" src="<%= news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <% end %>
-      <% end %>
-      <% if news.image_embed%>
-        <% if news.image_embed != "" %>
-        <a class="embedly-card" data-card-theme="dark" href="<%= news.image_embed %>"></a>
-<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-      <% end %>
-      <% end %>
-      <p><%= news.content %></p>
-      <% if current_user.try(:admin?) %>
-      <h4>Controls</h4>
-      <div class="controls"><%= link_to 'Edit', edit_news_path(news) %><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        <% end %>
-      </div>
+    	<div class="post-header">
+    		<h1><%= news.title %></h1>
+    		<p style="text-align:center"><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a target="_blank" href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
+    		<% if current_user.try(:admin?) %>
+    			<p style="text-align:center"><%= link_to 'Edit', edit_news_path(news) %> | <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %><p>
+    		<% end %>
+    	</div>
+    	<div class="post-body">
+    		 <% if news.youtube_embed %>
+		        <% if news.youtube_embed != "" %>
+		        	<iframe style="margin:auto" src="<%= news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
+		        <% end %>
+		     <% end %>
+		     <% if news.image_embed%>
+		        <% if news.image_embed != "" %>
+		        	<a class="embedly-card" data-card-theme="dark" href="<%= news.image_embed %>"></a>
+					<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+		     	<% end %>
+		     <% end %>
+		     <div class="post-text">
+		     <%= markdown(news.content) %>
+		     </div>
+    	</div>
+    </div>
     <% end %>
     <%= link_to "View More Posts", archive_index_path, :class => 'more' %>
-  </div>
-</section>
-
-<section class="area about-section hidden">
-  <div class="wrap">
-<p>In the late months of 2008, on the US server of Andorhal, the friendship was
-made that would eventually create Iron Legacy. Through the years, we've spent
-countless hours establishing our goals in the game and figuring out just the
-right way to accomplish them. </p>
-
-<p>Throughout Mists of Pandaria we found ourselves with influxes of new players
-hungry for progression but we never really excelled to the level we had imagined.
-This was not simply because we couldn't, but because we unfortunately didn't
-have players with the same goals.</p>
-
-<p>After some thinking and weeding out options, it was decided among the leaders
-of Iron Legacy that to rekindle the love for the game, change had to be made.
-Both leaders rolled new faction, new server, started from scratch and eventually
-came to the conclusion of starting a brand new guild.</p>
-
-<p>After pooling efforts together, Iron Legacy saw a massive burst in recruitment
-of players with exactly the same goals, thus providing the guild with the tools
-needed to excel to the level we had always imagined.</p>
-
-<h2><strong>Iron Legacy</strong> has returned to conquer Draenor.</h2>
-  </div>
-</section>
-
-<section class="area recruitment-section hidden">
-  <div class="wrap">
-  <h1 style="text-align:center">We play on US-Emerald Dream</h1>
-  <h2 class="times"><strong>Our raid times are 8pm-12am server time Tuesday, Wednesday and Thursday</strong></br>(9pm-1am EST time)</h2>
-  <h2>We are Currently Recruiting all good DPS</h2>
-  <h2>If you feel that you can compete with our current members, feel free to submit an application for our consideration.</h2>
-  <%= link_to "Apply", main_app.forem_path, :class => 'more' %>
-  </div>
-</section>
-
-
-<% if current_user.try(:admin?) %>
-<%= link_to '', new_news_path, :class => "floating tooltipped hint--top" %>
-<% end %>
-
-
-</div>
-
-<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+</span>

@@ -1,17 +1,15 @@
-<div id='forum'>
-  <h2 class="breadcrumb"><%= link_to t('forem.forum.forums'), forem.root_path %><%= link_to forem_emojify(forum.category), [forem, forum.category] %><%= link_to forem_emojify(forum.title), [forem, forum] %></h2>
-  <span id='description'><%= forem_format(forum.description) %></span>
-  <div id='forum_topic_links' class='btn-group'>
-    <% unless @topic.try(:new_record?) %>
-      <% if can? :create_topic, @forum %>
-        <%= link_to t('forem.topic.links.new'), forem.new_forum_topic_path(forum), :class => "btn btn-primary", :id => "new-topic" %>
-      <% end %>
+<h2 class="breadcrumb"><%= link_to t('forem.forum.forums'), forem.root_path %><i class="fa fa-chevron-right"></i><%= link_to forem_emojify(forum.category), [forem, forum.category] %><i class="fa fa-chevron-right"></i><%= link_to forem_emojify(forum.title), [forem, forum] %></h2>
+<h2 id='description'><%= forem_format(forum.description) %></h2>
+<div id='forum_topic_links' class='btn-group'>
+  <% unless @topic.try(:new_record?) %>
+    <% if can? :create_topic, @forum %>
+      <%= link_to t('forem.topic.links.new'), forem.new_forum_topic_path(forum), :class => "button", :id => "new-topic" %>
     <% end %>
-    <% if @topic %>
-      <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum), :class => "btn" %>
-    <% end %>
-    <% if can? :moderate, @forum %>
-      <%= link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), :class => "btn btn-primary" %>
-    <% end %>
-  </div>
+  <% end %>
+  <% if @topic %>
+    <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum), :class => "button" %>
+  <% end %>
+  <% if can? :moderate, @forum %>
+    <%= link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum), :class => "button moderation" %>
+  <% end %>
 </div>

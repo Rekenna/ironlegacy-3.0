@@ -6,8 +6,8 @@
 
       var overlayActive = false;
       var doneAnimating = true;
-      var inDuration = 250;
-      var outDuration = 200;
+      var inDuration = 275;
+      var outDuration = 225;
       var origin = $(this);
       var placeholder = $('<div></div>').addClass('material-placeholder');
       var originalWidth = origin.width();
@@ -65,22 +65,22 @@
 
         
         // Resize Image      
-        var ratio = originalWidth / originalHeight;
+        var ratio = 0;
         var widthPercent = originalWidth / windowWidth;
-        var heightPercent = originalWidth / windowHeight;
+        var heightPercent = originalHeight / windowHeight;
         var newWidth = 0;
         var newHeight = 0;
 
         if (widthPercent > heightPercent) {
+          ratio = originalHeight / originalWidth;
           newWidth = windowWidth * 0.9;
           newHeight = windowWidth * 0.9 * ratio;
         }
         else {
+          ratio = originalWidth / originalHeight;
           newWidth = (windowHeight * 0.9) * ratio;
           newHeight = windowHeight * 0.9;
         }
-
-        console.log(originalWidth, originalHeight, ratio, newHeight, newWidth);
 
         // Reposition Element AND Animate image + set z-index
         origin.css('left', 0)

@@ -15,21 +15,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require forem
-//= require_tree .
+//= require sweet-alert.min
+//= require Markdown.Converter
+//= require Markdown.Sanitizer
 
 $(".trigger").html("<i class='fa fa-bars'></i>");
 $(".floating").html("<i class='fa fa-plus'></i>").attr("data-hint", 'Create Post');
 
-$(".error").click(function(){
-	$(".error").slideUp();
-});
-
-
 $(".trigger").click(function(){
 	console.log("Clicked Trigger!");
 	$("main").toggleClass("menu-shown");
-	$("footer").toggleClass("menu-shown");
-	$("nav").toggleClass("menu-shown");
 	if($("main").hasClass("menu-shown")){
 		$(".trigger").html("<i class='fa fa-close'></i>");
 	}else{
@@ -37,6 +32,19 @@ $(".trigger").click(function(){
 	}
 });
 
-$(document).ready(function(){
-                  $('.tooltipped').tooltip();
-                });
+$( window ).resize(function() {
+  $( "main" ).removeClass("menu-shown");
+});
+
+
+$(function() {
+  // When using more than one `textarea` on your page, change the following line to match the one you’re after
+  var $textarea = $('textarea'),
+      $preview = $('<div id="preview" />').insertAfter($textarea),
+      convert = new Markdown.getSanitizingConverter().makeHtml;
+
+  // instead of `keyup`, consider using `input` using this plugin: https://mathiasbynens.be/notes/oninput#comment-1
+  $textarea.keyup(function() {
+    $preview.html(convert($textarea.val()));
+  }).trigger('keyup');
+});

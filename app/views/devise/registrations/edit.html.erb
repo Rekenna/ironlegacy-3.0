@@ -1,6 +1,6 @@
 <section class="content">
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 class="edit_h2">Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -8,6 +8,11 @@
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Avatar' %>
+    <p>For Avatars we use <a href="https://en.gravatar.com/">Gravatar</a>. Gravatar is a multi-platform Avatar system and as long as the email for your account matches your email for Gravatar your Avatar will automatically be used.</p>
   </div>
 
   <div class="field">
@@ -29,8 +34,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="post">
-  <h2>Save the Changes to your Account</h2>
+  <h2 class="edit_h2">Save the Changes to your Account</h2>
  
 
   <div class="field"  style="text-align:center">
@@ -39,13 +43,12 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update", :class => "update"%>
+    <%= f.submit "Update", :class => "submit"%>
   </div>
 <% end %>
- </div>
 
-<p><%= button_to "Cancel my account", registration_path(resource_name), :class => "cancel", data: { confirm: "Are you sure?" }, method: :delete %></p>
+<div class="actions">
 
-<%= link_to "Back", :back, :class => "back" %>
-
+<%= link_to "Back", :back, :class => "cancel" %>
+</div>
 </section>

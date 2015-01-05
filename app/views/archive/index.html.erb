@@ -1,32 +1,34 @@
-<section class="area news-section">
-  <div class="wrap">
+<span class="news">
+
+  <% if current_user.try(:admin?) %>
+  <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_news_path, :class => "create" %>
+  <% end %>
+
     <% @news.each do |news| %>
     <div class="post">
-      <h1 style="text-align:center"><%= news.title %></h1>
-      <p style="text-align:center"><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
-      <% if news.youtube_embed %>
-        <% if news.youtube_embed != "" %>
-        <div class="flex">
-        <iframe style="margin:auto" src="<%= news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <% end %>
-      <% end %>
-      <% if news.image_embed%>
-        <% if news.image_embed != "" %>
-        <a class="embedly-card" data-card-theme="dark" href="<%= news.image_embed %>"></a>
-<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-      <% end %>
-      <% end %>
-      <p><%= news.content %></p>
-      <% if current_user.try(:admin?) %>
-      <h4>Controls</h4>
-      <div class="controls"><%= link_to 'Edit', edit_news_path(news) %><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      <div class="post-header">
+        <h1><%= news.title %></h1>
+        <p style="text-align:center"><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
+        <% if current_user.try(:admin?) %>
+          <p style="text-align:center"><%= link_to 'Edit', edit_news_path(news) %> | <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %><p>
         <% end %>
       </div>
+      <div class="post-body">
+         <% if news.youtube_embed %>
+            <% if news.youtube_embed != "" %>
+              <iframe style="margin:auto" src="<%= news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
+            <% end %>
+         <% end %>
+         <% if news.image_embed%>
+            <% if news.image_embed != "" %>
+              <a class="embedly-card" data-card-theme="dark" href="<%= news.image_embed %>"></a>
+          <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+          <% end %>
+         <% end %>
+         <div class="post-text">
+         <%= markdown(news.content) %>
+         </div>
+      </div>
+    </div>
     <% end %>
-  </div>
-</section>
-
-<% if current_user.try(:admin?) %>
-<%= link_to '', new_news_path, :class => "floating tooltipped hint--top" %>
-<% end %>
+</span>

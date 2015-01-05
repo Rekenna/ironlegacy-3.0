@@ -16,7 +16,7 @@
     <%= f.text_field :title %>
   </div>
 
-  <h2>Choose to Embed either Youtube or Imgur, not both!</h2>
+  <h2 class="edit_h2">Choose to Embed either Youtube or Imgur, not both!</h2>
 
   <div class="field">
     <%= f.label "Video Embed (Youtube Link)" %><br>
@@ -28,11 +28,13 @@
     <%= f.text_field :image_embed %>
   </div>
 
+  <h2 class="edit_h2">Post Content</h2>
+
   <div class="field">
-    <%= f.label :content %><br>
+    <%= f.label :content, "Content (Markdown Enabled)" %><br>
     <%= f.text_area :content %>
   </div>
   <div class="actions">
-    <span class="update"><%= f.submit%></span>
+    <span class="update"><%= f.submit :class => "submit" %></span>
   </div>
 <% end %>

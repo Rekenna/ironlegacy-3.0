@@ -1,13 +1,8 @@
-<section class="content">
+<span class="login">
+<h2>Welcome back</h2>
 
-  <div class="registrationwrapper">
-
-    <div class="info">
-      <h2>Welcome back</h2>
-
-    </div>
-    <div class="form">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="form">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :login %><br />
     <%= f.text_field :login, autofocus: true %>
@@ -19,19 +14,17 @@
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
+    <div class="field remember">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in", :class =>"signup" %>
+    <%= f.submit "Login", :class =>"submit" %>
   </div>
 <% end %>
 
-<p><%= render "devise/shared/links" %></p>
+<p class="links"><%= render "devise/shared/links" %></p>
 </div>
-</div>
-
-</section>
+</span>

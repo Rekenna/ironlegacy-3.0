@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
 
 
+  get 'recruitment/show'
+
+  get 'aboutus/show'
+
+  get 'applicationtemplate/show'
+
+  # match 'users/:id', :to => "users#show", :as => :user
+  # get ':users/:id', to: 'users#show', as: :user
+
   resources :news
 
   get 'archive/index'
-
+  
   # This line mounts Forem's routes at /forums by default.
   # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
@@ -15,6 +24,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :news
 
+  resources :users
 
   root 'news#index'
   # The priority is based upon order of creation: first created -> highest priority.
