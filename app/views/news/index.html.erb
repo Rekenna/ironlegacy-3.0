@@ -5,7 +5,7 @@
 	<% end %>
 
     <% @news.take(3).each do |news| %>
-    <div class="post">
+    <div class="news_post">
     	<div class="post-header">
     		<h1><%= news.title %></h1>
     		<p style="text-align:center"><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a target="_blank" href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
