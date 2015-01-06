@@ -9,6 +9,9 @@
         <div class="news_item_header">
             <h1><%= news.title %></h1>
             <p style="text-align:center"><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a target="_blank" href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
+            <% if current_user.try(:admin?) %>
+                <p style="text-align:center"><%= link_to 'Edit', edit_news_path(news) %> | <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %><p>
+            <% end %>
         </div>
         <div class="news_item_video">
             <% if news.youtube_embed %>
@@ -21,7 +24,6 @@
             <%= markdown(news.content) %>
         </div>
     </div>
-
     <% end %>
 
 </div>
