@@ -30,10 +30,17 @@
 
   <h2 class="edit_h2">Post Content</h2>
 
+  <div class="preview_wrapper">
   <div class="field">
-    <%= f.label :content, "Content (Markdown Enabled)" %><br>
-    <%= f.text_area :content %>
+  <%= f.label :content, "Content (#{link_to 'Markdown', main_app.root_path} Enabled)".html_safe %>
+  <%= f.label :content, "Live Markdown Preview".html_safe %>
   </div>
+</div>
+<div class="preview_wrapper">
+  <div class="field">
+      <%= f.text_area :content %>
+  </div>
+</div>
   <div class="actions">
     <span class="update"><%= f.submit :class => "submit" %></span>
   </div>

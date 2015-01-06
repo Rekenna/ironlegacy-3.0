@@ -25,6 +25,7 @@ $(".floating").html("<i class='fa fa-plus'></i>").attr("data-hint", 'Create Post
 $(".trigger").click(function(){
 	console.log("Clicked Trigger!");
 	$("main").toggleClass("menu-shown");
+  $("nav").toggleClass("menu-shown");
 	if($("main").hasClass("menu-shown")){
 		$(".trigger").html("<i class='fa fa-close'></i>");
 	}else{

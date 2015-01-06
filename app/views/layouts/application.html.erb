@@ -15,10 +15,6 @@
 <%= render 'layouts/header' %>
 
 <main>
-
-  <!-- Navigation Render Goes Here -->
-  <%= render 'layouts/navigation' %>
-
   <!-- Page Content -->
   <article>
     <%= yield %>
@@ -32,6 +28,12 @@
 
 </main>
 
+
+<!-- Navigation Render Goes Here -->
+<%= render 'layouts/navigation' %>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <!-- Flash Messages Render -->
   <%= render 'layouts/messages' %>

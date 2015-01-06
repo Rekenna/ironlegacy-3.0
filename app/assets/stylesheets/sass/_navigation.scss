@@ -3,12 +3,11 @@ nav{
     height: 500%;
     width: 200px;
     position: fixed;
-    top: 0;
+    top: 60px;
     left: 0;
     background-color: rgba(0,0,0, .2);
     display: block;
     z-index: $nav-z;
-    padding-top: 60px;
     overflow-y: auto;
     @media screen and (max-width: $tablet){
       left: -200px;
