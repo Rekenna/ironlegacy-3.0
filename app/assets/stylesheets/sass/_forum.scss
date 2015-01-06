@@ -241,9 +241,9 @@
 }
 
 .post{
-	@include display(flex);
-	@include flex-direction(row);
-	@include justify-content(space-between);
+	// @include display(flex);
+	// @include flex-direction(row);
+	// @include justify-content(space-between);
 	background: #f7f7f7;
 	padding: 10px;
 	margin-top: 10px;
