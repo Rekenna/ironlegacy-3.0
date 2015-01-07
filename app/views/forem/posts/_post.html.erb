@@ -17,9 +17,7 @@
     <div class="post_header">
        <div class='btn-group'>
           <% if post.reply_to %>
-                <div class='in-reply-to'>
                   <%= link_to "#{t("forem.post.in_reply_to")} #{post.reply_to.user.forem_name}", "#post-#{post.reply_to.id}" %>
-                </div>
               <% end %>
           <% if forem_user %>
             <% if can?(:reply, post.topic) %>
