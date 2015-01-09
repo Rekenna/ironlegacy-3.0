@@ -6,7 +6,10 @@
   	</script>
   <% else %>
     <script type="text/javascript">
-      swal("Sweet!","<%= value %>", "success");
+      swal({
+        title: "<%= value %>",
+        type: "success"
+      });
     </script>
   <% end %>
 <!--   <div class="error alert-<%= key %>">
