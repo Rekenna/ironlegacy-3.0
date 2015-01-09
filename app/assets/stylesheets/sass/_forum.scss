@@ -251,6 +251,16 @@
       	@include flex-direction(column);
       	@include justify-content(flex-start);
     }
+    p{
+		a{
+			@media screen and (max-width: $tablet){
+      		font-size: 75%;
+      		}
+      		@media screen and (max-width: $phone){
+      		font-size: 50%;
+      		}
+		}
+	}	
     div{
 		// border: 2px solid black;
 		width: 100%;
