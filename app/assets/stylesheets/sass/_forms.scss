@@ -59,6 +59,9 @@
 	.TogglePressed{
 		background-color: $color4 !important;
 	}
+	.full-height{
+		height: auto !important;
+	}
 }
 .remember{
 	@include display(flex);

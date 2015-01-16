@@ -51,18 +51,28 @@ $(function() {
   }).trigger('keyup');
 
   $("#MarkdownToggle").click(function(){
-    $(this).toggleClass("TogglePressed");
-    // $textarea.toggle();
-    $preview.toggle();
+    if($("#MarkdownToggle").hasClass("TogglePressed")){
+       $(this).removeClass("TogglePressed");
+       $textarea.show();
+       $preview.hide();
+    }else{
+      $(this).addClass("TogglePressed");
+      $("#PreviewToggle").removeClass("TogglePressed");
+      $textarea.show();
+      $preview.show();
+      $preview.removeClass("full-height");
+    }
   })
   $("#PreviewToggle").click(function(){
     $(this).toggleClass("TogglePressed");
     if($("#MarkdownToggle").hasClass("TogglePressed")){
       $textarea.hide();
+      $preview.addClass("full-height");
       $("#MarkdownToggle").removeClass("TogglePressed");
     }else{
       $textarea.toggle();
       $preview.toggle();
+      $preview.toggleClass("full-height");
     }
   })
 });
