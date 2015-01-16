@@ -52,7 +52,17 @@ $(function() {
 
   $("#MarkdownToggle").click(function(){
     $(this).toggleClass("TogglePressed");
-    $textarea.toggle();
+    // $textarea.toggle();
     $preview.toggle();
+  })
+  $("#PreviewToggle").click(function(){
+    $(this).toggleClass("TogglePressed");
+    if($("#MarkdownToggle").hasClass("TogglePressed")){
+      $textarea.hide();
+      $("#MarkdownToggle").removeClass("TogglePressed");
+    }else{
+      $textarea.toggle();
+      $preview.toggle();
+    }
   })
 });

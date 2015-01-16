@@ -39,12 +39,13 @@
 	    overflow-y: auto;
 	    min-height:400px;
 	    padding:2px;
+	    @include transition(all .5s);
 	}
 	#preview{
 		min-height: 400px;
-		height: auto;
+		@include transition(all .5s);
 	}
-	#MarkdownToggle{
+	.markdowntoggle{
 		color: #fff;
 		background-color: $color1;
 		padding: 5px;
