@@ -36,7 +36,27 @@
 	textarea{
 		width: 100%;
 		resize: none;
+	    overflow-y: auto;
+	    min-height:400px;
+	    padding:2px;
+	}
+	#preview{
 		min-height: 400px;
+		height: auto;
+	}
+	#MarkdownToggle{
+		color: #fff;
+		background-color: $color1;
+		padding: 5px;
+		text-align: center;
+		@include transition(all .5s);
+		cursor: pointer;
+		&:hover{
+			opacity: .8;
+		}
+	}
+	.TogglePressed{
+		background-color: $color4 !important;
 	}
 }
 .remember{

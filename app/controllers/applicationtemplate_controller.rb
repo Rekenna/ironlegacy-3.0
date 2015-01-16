@@ -1,4 +1,8 @@
 class ApplicationtemplateController < ApplicationController
-  def show
+
+  def index
   end
+  
+  # def show
+  # end
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'aboutus/show'
 
-  get 'applicationtemplate/show'
+  get 'applicationtemplate/index'
 
   # match 'users/:id', :to => "users#show", :as => :user
   # get ':users/:id', to: 'users#show', as: :user

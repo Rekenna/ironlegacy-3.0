@@ -43,9 +43,16 @@ $(function() {
   var $textarea = $('textarea'),
       $preview = $('<div id="preview" />').insertAfter($textarea),
       convert = new Markdown.getSanitizingConverter().makeHtml;
+      $preview.hide();
 
   // instead of `keyup`, consider using `input` using this plugin: https://mathiasbynens.be/notes/oninput#comment-1
   $textarea.keyup(function() {
     $preview.html(convert($textarea.val()));
   }).trigger('keyup');
+
+  $("#MarkdownToggle").click(function(){
+    $(this).toggleClass("TogglePressed");
+    $textarea.toggle();
+    $preview.toggle();
+  })
 });
