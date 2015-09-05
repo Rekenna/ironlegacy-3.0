@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <!-- Head -->
+  <%= render 'layouts/partials/head' %>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="masthead">
+    <a class="logo" href="/"><%= image_tag("legacy2.svg") %><span>Iron Legacy</span></a>
+    <ul>
+      <%= link_to "<li>Forums</li>".html_safe, main_app.forem_path  %>
+      <%= link_to "<li>About</li>".html_safe, main_app.about_path  %>
+      <%= link_to "<li>Resources</li>".html_safe, main_app.root_path  %>
+
+      <% if user_signed_in? %>
+        <span class="username"><%= link_to ('<li>'+current_user.username+'</li>').html_safe, main_app.user_path([current_user.id]) %></span>
+            <%= link_to "<li class='setting fa fa-cog'></li>".html_safe, main_app.edit_user_registration_path %>
+            <%= link_to "<li class='setting fa fa-sign-out'></li>".html_safe, main_app.destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "<li>Login</li>".html_safe, main_app.new_user_session_path, :class => 'active' %>
+        <%#= link_to "<li class='apply'>Apply</li>".html_safe, main_app.new_user_registration_path %>
+      <% end %>
+
+      <a class="trigger"><li>Menu <i class="fa fa-bars"></i></li></a>
+    </ul>
+  </div>
+  </header>
+  <!-- Particles -->
+  <div id="particles-js">
+      <span class="signup">
+        <% if user_signed_in? %>
+        <%= link_to ("Welcome Back, "+current_user.username+".").html_safe, main_app.user_path([current_user.id]) %>
+        <% else %>
+        <%= link_to "Login".html_safe, main_app.new_user_session_path %>
+        <%= link_to "Apply".html_safe, main_app.new_user_registration_path %>
+        <% end %>
+      </span>
+    </div>
+  <!-- Main Content -->
+  <main class="page">
+    <article>
+      <%= yield %>
+    </article>
+    <!-- Sidebar -->
+    <%= render 'layouts/partials/sidebar' %>
+  </main>
+
+  <!-- Off-Canvas Navigation -->
+  <%= render 'layouts/partials/navigation' %>
+
+  <!-- Scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="assets/particles.js"></script>
+  <script type="text/javascript" src="assets/home.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-57336042-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>

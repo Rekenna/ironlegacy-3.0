@@ -3,59 +3,10 @@
 
 // Files
 @import "normalize";
-@import "sweet-alert";
+@import "typeplate";
 @import "variables";
-@import "header";
-@import "navigation";
-@import "sidebar";
+@import "layout";
 @import "news";
-@import "forum";
 @import "forms";
-@import "footer";
-
-html{
-	overflow-x: hidden;
-}
-
-main{
-	@include display(flex);
-  	@include flex-direction(row);
-  	@include align-items(flex-start);
-  	@include center;
-  	@include transition(transform .5s ease-in-out);
-	margin-top: 60px;
-	margin-left: 200px;
-	article{
-		@include flex(7);
-		padding: 5px;
-		margin-right: 5px;
-		box-sizing: border-box;
-	
-	}
-	aside{
-		@include flex(3);
-		padding: 5px;
-		box-sizing: border-box;
-		@media screen and (max-width: $phone){
-			margin: 0;
-			padding: 0;
-			@include order(-1);
-		}
-	}
-	@media screen and (max-width: $tablet){
-		margin: auto;
-		margin-top: 60px;
-	}
-	@media screen and (max-width: $phone){
-		@include flex-direction(column);
-		article, aside{
-			@include flex(1);
-			width: 100%;
-		}
-		padding: 0;
-	}
-}
-
-.menu-shown{
-	@include transform(translateX(200px));
-}
+@import "sidebar";
+@import "forums";

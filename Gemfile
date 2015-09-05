@@ -23,11 +23,12 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+gem 'omniauth-bnet', '~> 1.0.1'
 
 gem 'devise'
 gem "rspec-rails", "~> 2.14.0"
 gem 'forem', :github => "radar/forem", :branch => "rails4"
-gem 'forem-redcarpet', :git => "git://github.com/radar/forem-redcarpet"
+# gem 'forem-redcarpet', :git => "git://github.com/radar/forem-redcarpet"
 gem 'redcarpet', '~> 3.0.0'
 gem 'kaminari'
 
@@ -36,6 +37,7 @@ gem 'paperclip', '~> 4.1'
 gem 'bourbon'
 gem "font-awesome-rails"
 gem 'quiet_assets', group: :development
+
 
 
 # Localhost Mailer
@@ -56,4 +58,4 @@ gem 'foreman', group: :development
 
 gem 'rails_12factor', group: :production
 
-ruby "2.1.4"
+ruby "2.2.3"

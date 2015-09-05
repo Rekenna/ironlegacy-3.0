@@ -1,52 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Iron Legacy | World of Warcraft Guild</title>
-  <meta name="description" content="The official website for the World of Warcraft Guild, Iron Legacy.">
-  <meta name="author" content="Ryan McKenna | www.rekenna.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-site-verification" content="NPk1W2ZRmlZgoeGYkz33EwCQHEKhwmR13eDDIugL8pI" />
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+  <!-- Head -->
+  <%= render 'layouts/partials/head' %>
 <body>
+  <!-- Header -->
+  <%= render 'layouts/partials/header' %>
+  <!-- Main Content -->
+  <main class="page">
+    <article>
+      <%= yield  %>
+    </article>
+    <!-- Sidebar -->
+    <%= render 'layouts/partials/sidebar' %>
+  </main>
 
-<!-- Header Render -->
-<%= render 'layouts/header' %>
-
-<main>
-  <!-- Page Content -->
-  <article>
-    <%= yield %>
-      <!-- Render Footer -->
-  <%= render 'layouts/footer' %>
-  </article>
-  <aside>
-    <!-- Render Sidebar -->
-    <%= render 'layouts/sidebar' %>
-  </aside>
-
-</main>
-
-
-<!-- Navigation Render Goes Here -->
-<%= render 'layouts/navigation' %>
-
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <!-- Flash Messages Render -->
-  <%= render 'layouts/messages' %>
-
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script> -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-57336042-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  <!-- Off-Canvas Navigation -->
+  <%= render 'layouts/partials/navigation' %>
+  <!-- Scripts -->
+  <%= render 'layouts/partials/scripts'  %>
 </body>
 </html>

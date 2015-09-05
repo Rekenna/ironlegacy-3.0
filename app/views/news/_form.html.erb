@@ -1,4 +1,5 @@
 <%= form_for(@news) do |f| %>
+<span class="news_form">
   <% if @news.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
@@ -16,8 +17,6 @@
     <%= f.text_field :title %>
   </div>
 
-  <h2 class="edit_h2">Choose to Embed either Youtube or Imgur, not both!</h2>
-
   <div class="field">
     <%= f.label "Video Embed (Youtube Link)" %><br>
     <%= f.text_field :youtube_embed %>
@@ -28,12 +27,10 @@
     <%= f.text_field :image_embed %>
   </div>
 
-  <h2 class="edit_h2">Post Content</h2>
-
   <div class="preview_wrapper">
   <div class="field">
   <%= f.label :content, "Content (#{link_to 'Markdown', main_app.root_path} Enabled)".html_safe %>
-  <%= f.label :content, "Live Markdown Preview".html_safe %>
+  <%= f.label :text, "Toggle Live Preview".html_safe, :id =>"MarkdownToggle", :class => "markdowntoggle" %>
   </div>
 </div>
 <div class="preview_wrapper">
@@ -41,7 +38,13 @@
       <%= f.text_area :content %>
   </div>
 </div>
+<div class="preview_wrapper">
+  <div class="field">
+      <label id="PreviewToggle" class="markdowntoggle">Preview</label>
+  </div>
+</div>
   <div class="actions">
     <span class="update"><%= f.submit :class => "submit" %></span>
   </div>
+  </span>
 <% end %>

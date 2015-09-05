@@ -1,28 +1,97 @@
-.edit_h1{
-	text-align: center;
-	font-family: $roboto;
-	color: #333;
+.login{
+	h2{
+		text-align: center;
+		font-family: $raleway;
+		background: #fff;
+		margin: 0;
+	}
+ 	.form{
+		margin: auto;
+		padding: 0 10px 10px 10px;
+		background: #fff;
+		@include tablet{
+			border-bottom-right-radius: 15px;
+	  		border-bottom-left-radius: 15px;
+		}
+		label{
+			font-family: $raleway;
+			font-size: 15px;
+		}
+		input[type="text"], input[type="password"], input[type="email"]{
+			width: 100%;
+			border: 0;
+			border-bottom: 2px solid #333;
+			outline: 0;
+			font-size: 25px;
+			font-family: $raleway;
+			&:focus{
+				border-color: $oceanblue;
+				}
+		}
+		input[type="submit"]{
+			border: 0;
+			text-decoration: none;
+			display: block;
+			width: 100%;
+			font-family: $raleway;
+			background-color: #fff;
+			border: 2px solid $oceanblue;
+			padding: 5px;
+			@include transition(all .1s linear);
+			&:first-child{
+				margin-right: 5px;
+			}
+			&:hover{
+				background-color: $oceanblue;
+				color: #fff;
+			}
+		}
+	}
+	.links{
+		display: block;
+		text-align: center;
+		margin: 0;
+		margin-top: 5px;
+		@include display(flex);
+		@include align-items(center);
+		@include justify-content(center);
+		a{
+			text-decoration: none;
+			display: block;
+			width: 50%;
+			color: #333;
+			font-size: 14px;
+			font-family: $raleway;
+			border: 2px solid #333;
+			padding: 2px;
+			@include transition(all .1s linear);
+			&:first-child{
+				margin-right: 5px;
+			}
+			&:hover{
+				background-color: #333;
+				color: #fff;
+			}
+		}
+	}
 }
+
 .edit_h2{
-	@extend .edit_h1;
-	font-size: 90%;
-	border-bottom: #F7F7F7 solid 2px;
-	max-width: 800px;
-	margin: auto;
-	padding: 2px;
-	margin-top: 5px;
+	text-align: center;
+	font-size: 25px;
 }
+
 .field{
-	max-width: 800px;
+	// max-width: 800px;
 	margin: auto;
-	font-family: $roboto;
+	font-family: $raleway;
 	color: #333;
 	label{
 		font-size: 90%;
 		a{
-			color: $color1;
+			color: $oceanblue;
 			&:hover{
-				color: $color2;
+				color: $oceanblue;
 			}
 		}
 	}
@@ -44,10 +113,13 @@
 	#preview{
 		min-height: 400px;
 		@include transition(all .5s);
+		p{
+			text-indent: 0;
+		}
 	}
 	.markdowntoggle{
 		color: #fff;
-		background-color: $color1;
+		background-color: $oceanblue;
 		padding: 5px;
 		text-align: center;
 		@include transition(all .5s);
@@ -57,103 +129,18 @@
 		}
 	}
 	.TogglePressed{
-		background-color: $color4 !important;
+		background-color: $bloodred !important;
 	}
 	.full-height{
 		height: auto !important;
 	}
 }
 .remember{
-	@include display(flex);
-	@include align-items(center);
-	@include flex-direction(row);
-	@include justify-content(flex-start);
-	input[type="checkbox"]{
-		width: 50px;
-		margin: 0;
-		padding: 0;
-		border: none;
-		border: 2px solid #333;
-		border-radius: 0px;
-		background-color: #fff;
-	}
-	label{
-		width: 100%;
+	input{
+		width: 30px;
+		text-align: left;
 	}
 }
-
-.actions{
-	max-width: 800px;
-	margin: auto;
-}
-.submit{
-	background-color: $color2;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	padding: 6px;
-	margin: auto;
-	width: 100%;
-	box-sizing: border-box;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-a.cancel{
-	background-color: $color4;
-	text-decoration: none;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	text-align: center;
-	padding: 6px;
-	margin: auto;
-	display: block;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-
-.login{
-	h2, h3{
-		text-align: center;
-		color: #333;
-		font-family: $raleway;
-	}
-	p{
-		max-width: 800px;
-		margin: auto;
-		text-align: center;
-		font-family: $roboto;
-		a{	
-			text-decoration: none;
-			font-family: $roboto;
-			padding-left: 10px;
-			font-size: 14px;
-			color: #333;
-			&:hover{
-				text-decoration: underline;
-			}
-		}
-	}
-	.links{
-		border-top: 2px solid #333;
-		margin-top: 5px;
-	}
-}
-
-
-.simple_form{
-	div{
-		@extend .field;
-	}
-	input[type="submit"]{
-		@extend .submit;
-		margin: auto;
-		display: block;
-		width: 50%;
-	}
-}
-
 .preview_wrapper .field{
 	@include display(flex);
 	@include align-items(stetch);
@@ -164,7 +151,6 @@ a.cancel{
 		// border: 2px solid blue;
 		width: 100%;
 		display: block;
-		
 		height: 400px;
 	}
 	label{
@@ -187,4 +173,76 @@ a.cancel{
 	@media screen and (max-width: $phone){
 		@include flex-direction(column);
 	}
+}
+.btn-primary{
+	text-decoration: none;
+	margin: auto;
+	display: block;
+	width: 100%;
+	text-align: center;
+	background-color: #fff;
+	color: #333;
+	font-size: 20px;
+	font-family: $raleway;
+	border: 2px solid $oceanblue;
+	padding: 5px;
+	@include transition(all .1s linear);
+	&:first-child{
+		margin-right: 5px;
+	}
+	&:hover{
+		background-color: $oceanblue;
+		color: #fff;
+	}
+}
+
+//Particles
+#form-particles{
+  position: relative;
+  height: 100%;
+  @include linear-gradient(0deg, #fff 0%, $oceanblue 70%, $oceanblue 100%);
+  display: block;
+  width: 100%;
+  @include tablet{
+  	position: fixed;
+  }
+  .devise_form{
+  	z-index: 4;
+  	// background: #fff;
+  	max-width: 600px;
+  	margin: auto;
+  	margin-top: 56px;
+  	height: 100%;
+  	// margin-top: 200px;
+  	@include tablet{
+  		margin-top: 200px;
+  	}
+  	@include box-sizing(border-box);
+  	// @include box-shadow(0px 0px 10px 2px #3B3B3B);
+  	.image_highlight{
+  		background-color: #333;
+  		width: 100%;
+  		padding: 10px 0 10px 0;
+  		@include tablet{
+  			border-top-right-radius: 15px;
+  			border-top-left-radius: 15px;
+  		}
+  		img{
+  			margin: auto;
+  			display: block;
+  			padding: 10px 10px 5px 10px;
+  			background: $oceanblue;
+  			border-radius: 50%;
+  			text-align: center;
+  		}
+  	}
+  }
+  canvas{
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+  	z-index: -1;
+  }
 }

@@ -1,30 +1,33 @@
-
-  <% if current_user.try(:admin?) %>
-  <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_news_path, :class => "create" %>
-  <% end %>
-<div class="news_wrap">
+<div class="news">
     <% @news.each do |news| %>
-
     <div class="news_item">
-        <div class="news_item_header">
-            <h1><%= news.title %></h1>
-            <p style="text-align:center"><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a target="_blank" href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
-            <% if current_user.try(:admin?) %>
-              <p style="text-align:center"><%= link_to 'Edit', edit_news_path(news) %> | <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %><p>
-            <% end %>
-        </div>
-        <div class="news_item_video">
-            <% if news.youtube_embed %>
-                <% if news.youtube_embed != "" %>
-                    <iframe style="margin:auto" src="<%= news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
+        <h1><%= news.title %></h1>
+        <p style="text-align:left"><%= news.created_at.strftime("Posted %B %d, %Y at ") + news.created_at.strftime('%T ') %><a target="_blank" href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
+        <% if current_user.try(:admin?) %>
+            <span class="admin"><%= link_to 'Edit', edit_news_path(news) %><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        <% end %>
+        <div class="news_content">
+            <% if news.image_embed %>
+                <% if news.image_embed != "" %>
+                    <%= markdown("![Highlight Image]("+news.image_embed+")")  %>
                 <% end %>
              <% end %>
-        </div>
-        <div class="news_item_content">
-            <%= markdown(news.content) %>
+             <% if news.youtube_embed %>
+                <% if news.youtube_embed != "" %>
+                <div class="youtube_video">
+                    <iframe style="margin:auto" src="<%= news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <% end %>
+             <% end %>
+            <div class="news_text">
+                <%= markdown(news.content) %>
+            </div>
         </div>
     </div>
-
     <% end %>
-
 </div>
+
+
+<% if current_user.try(:admin?) %>
+<%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_news_path, :class => "create" %>
+<% end %>

@@ -1,5 +1,8 @@
 <span class="login">
-<h2>Welcome back</h2>
+  <div class="image_highlight">
+    <%= image_tag("bear-paw.svg")  %>
+  </div>
+<h2>Welcome</h2>
 
 <div class="form">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

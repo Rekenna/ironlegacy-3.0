@@ -1,21 +1,25 @@
-<span class="news">
-<div class="news_post">
-    	<div class="post-header">
-    		<h1><%= @news.title %></h1>
-    		<p style="text-align:center"><%= @news.created_at.strftime("Posted %B %d, %Y at ") + @news.created_at.strftime('%T ') %><a target="_blank" href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
-    		<% if current_user.try(:admin?) %>
-    			<p style="text-align:center"><%= link_to 'Edit', edit_news_path(@news) %> | <%= link_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' } %><p>
-    		<% end %>
-    	</div>
-    		<div class="post_content">
-    		 <% if @news.youtube_embed %>
-		        <% if @news.youtube_embed != "" %>
-		        	<iframe style="margin:auto" src="<%= news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
-		        <% end %>
-		     <% end %>
-		     <%= markdown(@news.content) %>
-		     </div>
-    	</div>
-    	<%= link_to 'Continue Editing', edit_news_path(@news), :class => "more" %>
-    	<%= link_to 'Back to News', news_index_path, :class => "more" %>
-</span>
+<div class="news">
+    <div class="news_item">
+        <h1><%= @news.title %></h1>
+        <p style="text-align:left"><%= @news.created_at.strftime("Posted %B %d, %Y at ") + @news.created_at.strftime('%T ') %><a target="_blank" href="http://www.worldtimeserver.com/current_time_in_UTC.aspx">UTC</a></p>
+        <div class="news_content">
+            <% if @news.image_embed %>
+                <% if @news.image_embed != "" %>
+                    <%= markdown("![Highlight Image]("+@news.image_embed+")")  %>
+                <% end %>
+             <% end %>
+             <% if @news.youtube_embed %>
+                <% if @news.youtube_embed != "" %>
+                <div class="youtube_video">
+                    <iframe style="margin:auto" src="<%= @news.youtube_embed.sub('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/') %>" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <% end %>
+             <% end %>
+            <div class="news_text">
+                <%= markdown(@news.content) %>
+            </div>
+        </div>
+    </div>
+    <%= link_to 'Continue Editing', edit_news_path(@news), :class => "more" %>
+    <%= link_to 'Back to News', news_index_path, :class => "more" %>
+</div>

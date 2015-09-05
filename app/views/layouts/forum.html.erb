@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <!-- Head -->
+  <%= render 'layouts/partials/head' %>
+<body>
+  <!-- Header -->
+  <%= render 'layouts/partials/header' %>
+  <!-- Main Content -->
+  <main class="page">
+    <article>
+      <%= yield  %>
+    </article>
+  </main>
+  <!-- Off-Canvas Navigation -->
+  <%= render 'layouts/partials/navigation' %>
+  <!-- Scripts -->
+  <%= render 'layouts/partials/scripts'  %>
+</body>
+</html>

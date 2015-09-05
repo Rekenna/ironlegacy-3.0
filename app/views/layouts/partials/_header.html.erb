@@ -1,0 +1,21 @@
+<header class="fixed">
+	<div class="masthead">
+		<a class="logo" href="/"><%= image_tag("legacy2.svg") %><span>Iron Legacy</span></a>
+		<ul>
+			<%= link_to "<li>Forums</li>".html_safe, main_app.forem_path  %>
+			<%= link_to "<li>About</li>".html_safe, main_app.about_path  %>
+			<%= link_to "<li>Resources</li>".html_safe, main_app.root_path  %>
+
+			<% if user_signed_in? %>
+				<span class="username"><%= link_to ('<li>'+current_user.username+'</li>').html_safe, main_app.user_path([current_user.id]) %></span>
+	        	<%= link_to "<li class='setting fa fa-cog'></li>".html_safe, main_app.edit_user_registration_path %>
+	        	<%= link_to "<li class='setting fa fa-sign-out'></li>".html_safe, main_app.destroy_user_session_path, method: :delete %>
+			<% else %>
+				<%= link_to "<li>Login</li>".html_safe, main_app.new_user_session_path, :class => 'active' %>
+				<%#= link_to "<li class='apply'>Apply</li>".html_safe, main_app.new_user_registration_path %>
+			<% end %>
+
+			<a class="trigger"><li>Menu</li></a>
+		</ul>
+	</div>
+</header>

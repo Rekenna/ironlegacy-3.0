@@ -1,6 +1,9 @@
 <span class="login">
+  <div class="image_highlight">
+    <%= image_tag("legacy2.svg")  %>
+  </div>
 <h2 class="edit_h2">Change your password</h2>
-
+<div class="form">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
@@ -21,4 +24,5 @@
 <% end %>
 
 <p class="links"><%= render "devise/shared/links" %></p>
+</div>
 </span>

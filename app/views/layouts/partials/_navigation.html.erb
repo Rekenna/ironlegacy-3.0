@@ -1,0 +1,23 @@
+<nav>
+	<% if user_signed_in? %>
+			<div class="mobile-username">
+          <%= link_to (''+current_user.username+'').html_safe, main_app.user_path([current_user.id]) %>
+          	</div>
+          	<%= forem_avatar(current_user) %>
+          	<div class="mobile-login">
+              <%= link_to "Edit".html_safe, main_app.edit_user_registration_path %>
+              <%= link_to "Logout".html_safe, main_app.destroy_user_session_path, method: :delete %>
+              </div>
+        <% else %>
+        	<div class="mobile-login">
+          <%= link_to "Login".html_safe, main_app.new_user_session_path, :class => 'active' %>
+          <%= link_to "Apply".html_safe, main_app.new_user_registration_path %>
+          </div>
+        <% end %>
+	<ul>
+    <%= link_to "<li>Home</li>".html_safe, main_app.root_path %>
+		<%= link_to "<li>Forums</li>".html_safe, main_app.forem_path  %>
+    <%= link_to "<li>About</li>".html_safe, main_app.about_path  %>
+    <%= link_to "<li>Resources</li>".html_safe, main_app.root_path  %>
+	</ul>
+</nav>

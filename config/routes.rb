@@ -3,14 +3,12 @@ Rails.application.routes.draw do
 
   get 'recruitment/show'
 
-  get 'aboutus/show'
+  get 'aboutus/show', as: 'about'
 
   get 'applicationtemplate/index'
 
   # match 'users/:id', :to => "users#show", :as => :user
   # get ':users/:id', to: 'users#show', as: :user
-
-  resources :news
 
   get 'archive/index'
   
@@ -22,9 +20,12 @@ Rails.application.routes.draw do
   mount Forem::Engine, :at => '/forums'
 
   devise_for :users
-  resources :news
-
   resources :users
+
+  authenticate :user do
+    resources :news, only: [:new, :create, :edit, :update, :destroy]
+  end
+  resources :news, only: [:index, :show]
 
   root 'news#index'
   # The priority is based upon order of creation: first created -> highest priority.

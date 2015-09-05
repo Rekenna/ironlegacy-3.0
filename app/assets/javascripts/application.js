@@ -15,28 +15,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require forem
-//= require sweet-alert.min
 //= require Markdown.Converter
 //= require Markdown.Sanitizer
-
-$(".trigger").html("<i class='fa fa-bars'></i>");
-$(".floating").html("<i class='fa fa-plus'></i>").attr("data-hint", 'Create Post');
-
-$(".trigger").click(function(){
-	console.log("Clicked Trigger!");
-	$("main").toggleClass("menu-shown");
-  $("nav").toggleClass("menu-shown");
-	if($("main").hasClass("menu-shown")){
-		$(".trigger").html("<i class='fa fa-close'></i>");
-	}else{
-		$(".trigger").html("<i class='fa fa-bars'></i>");
-	}
-});
-
-$( window ).resize(function() {
-  $( "main" ).removeClass("menu-shown");
-});
-
 
 $(function() {
   // When using more than one `textarea` on your page, change the following line to match the one you’re after
@@ -75,4 +55,28 @@ $(function() {
       $preview.toggleClass("full-height");
     }
   })
+});
+
+$("header").addClass("fixed");
+
+// setTimeout(function(){
+//   $("nav").toggleClass("menu-shown");
+//   $(".trigger").toggleClass("active");
+// 	$("header").toggleClass("full-visibility");
+// },7000);
+//
+// setTimeout(function(){
+//   $("nav").toggleClass("menu-shown");
+//   $(".trigger").toggleClass("active");
+// 	$("header").toggleClass("full-visibility");
+// },9500);
+
+//Menu
+$(".trigger").click(function(){
+	$("nav").toggleClass("menu-shown");
+	$("header").toggleClass("full-visibility");
+});
+$("article").click(function(){
+	$("nav").removeClass("menu-shown");
+	$("header").removeClass("full-visibility");
 });

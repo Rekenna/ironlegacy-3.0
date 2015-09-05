@@ -1,39 +1,31 @@
-//Variable Definitions
+//Variables
 
-	// Color Palette
-	$color1: #193441;
-	$color2: #6cc75b;
-	$color3: #419d78;
-	$color4: #F46036;
-	$color5: #ffffff;
+//Color Palettes
+$oceanblue: #136F63;
+$bloodred: #8A0707; //844A87;
 
-	// Fonts
-	$roboto: 'Roboto', Arial, sans-serif;
-	$raleway: 'Raleway', Arial, sans-serif;
+// $oceanblue: $bloodred;
 
-	// Z-Index
-	$default-z: 1;
-	$main-z: 2;
-	$nav-z: 3;
-	$header-z: 4;
+$raleway: 'Raleway', sans-serif;
+$max-width: 1400px;
+  //Style Breaks
+  $phone: 600px;
+  $tablet: 900px;
+  $desktop: 1200px;
 
-	// Breakpoints
-	$phone: 900px;
-	$tablet: 1200px;
-	$desktop: 1400px;
-
-	// User Defined Mixins
-	@mixin center{
-		margin: auto;
-	}
-	@mixin button{
-		@include transition(.5s all);
-		background-color: white;
-		padding: 10px 15px 10px 15px;
-		margin:  0px 5px 0px 5px;
-		text-align: center;
-		border-radius: 5px;
-		font-family: $roboto;
-		min-width: 100px;
-		box-sizing: border-box;
-	}
+//Common Mixins
+@mixin phone{
+  @media screen and (min-width: $phone) {
+    @content;
+  }
+}
+@mixin tablet{
+  @media screen and (min-width: $tablet) {
+    @content;
+  }
+}
+@mixin desktop{
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}

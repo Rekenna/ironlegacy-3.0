@@ -12,7 +12,6 @@
  *
 
 *= require 'forem/base'
- *= require_self
  */
 
 // Gem Imports
@@ -21,7 +20,3 @@
 
 // Sass Files
 @import "sass/main";
-
-html,body{
-	font-family: 'Roboto', Arial, sans-serif;
-}

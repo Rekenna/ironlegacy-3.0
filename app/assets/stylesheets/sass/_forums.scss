@@ -1,0 +1,317 @@
+#forum_container{
+	width: 100%;
+	display: block;
+	padding: 0;
+}
+#admin_link{
+	width: 100%;
+	display: block;
+	a{
+		text-decoration: none;
+		display: block;
+		width: 100%;
+		text-align: center;
+		color: #333;
+		font-size: 14px;
+		font-family: $raleway;
+		border: 2px solid #333;
+		padding: 2px;
+		@include box-sizing(border-box);
+		@include transition(all .1s linear);
+		&:hover{
+			background-color: #333;
+			color: #fff;
+		}
+	}
+}
+
+.listing{
+	padding: 2px;
+	margin-top: 10px;
+	@include align-items(stretch);
+	@include display(flex);
+	@include flex-direction(row);
+	@include transition(all .5s);
+	&:hover{
+		background-color: #f7f7f7;
+	}
+	.counts{
+		display: none;
+		@include tablet{
+			display: inline-block;
+		}
+		@include flex(2);
+		padding: 10px;
+		p{
+			text-align: center;
+			font-family: $raleway;
+			font-size: 12px;
+			color: #333;
+			padding: 0px;
+			text-indent: 0;
+			margin: auto;
+			@include transition(all .5s);
+			&:hover{
+				color: $oceanblue;
+			}
+			.number{
+				padding: 2px;
+				width: 50%;
+				font-size: 12px;
+				margin: auto;
+			}
+		}
+	}
+	.description{
+		@include flex(9);
+		h2{
+			text-align: left;
+			font-family: $raleway;
+			font-size: 35px;
+			font-weight: 300;
+			a{
+				color: #333;
+				font-family: $raleway;
+				text-decoration: underline;
+				@include transition(all .5s);
+				&:hover{
+					color: $oceanblue;
+				}
+			}
+		}
+		p{
+			text-indent: 0;
+			margin: 10px 0 10px 0;
+		}
+		h5{
+			font-family: $raleway;
+			font-size: 14px;
+			font-weight: 300;
+			a{
+				color: #333;
+				font-family: $raleway;
+				@include transition(all .5s);
+				&:hover{
+					color: $oceanblue;
+				}
+			}
+		}
+	}
+}
+
+#description{
+	@include box-sizing(border-box);
+	display: block;
+	margin: 0;
+	text-align: center;
+	padding: 0px;
+	font-family: $raleway;
+	font-size: 35px;
+	font-weight: 300;
+	a{
+		@include transition(all .1s linear);
+		font-size: 30px;
+		color: #333;
+		&:hover{
+			color: $oceanblue;
+		}
+	}
+}
+
+.btn-group{
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	@include display(flex);
+	@include align-items(center);
+	@include justify-content(center);
+	a{
+		text-decoration: none;
+		display: block;
+		width: 50%;
+		border: 2px solid $oceanblue;
+		padding: 5px;
+		color: #333;
+		@include transition(all .1s linear);
+		&:first-child{
+			margin-right: 5px;
+		}
+		&:hover{
+			background-color: $oceanblue;
+			color: #fff;
+		}
+	}
+}
+
+.topic_listing{
+	@include align-items(center);
+	@include display(flex);
+	@include flex-direction(row);
+	@include justify-content(space-between);
+	font-family: $raleway;
+	@include transition(all .5s);
+	padding: 5px;
+	&:hover{
+		background-color: #f7f7f7;
+	}
+	div{
+		@include flex(1);
+		text-align: center;
+		font-size: 10px;
+		@include phone{
+			font-size: 14px;
+		}
+		@include tablet{
+			font-size: 18px;
+		}
+	}
+	.larger{
+		@include flex(2);
+		@include tablet{
+			@include flex(3);
+		}
+		text-align: left;
+		.subject, .started-by{
+			text-align: left;
+		}
+		a{
+			@include transition(all .25s);
+			color: #333;
+			text-decoration: none;
+			&:hover{
+				text-decoration: underline;
+				color: $oceanblue;
+			}
+		}
+	}
+}
+
+.category, .forum, #topic{
+	width: 100%;
+	display: block;
+	h2.category_header{
+		@include box-sizing(border-box);
+		display: block;
+		margin: 0;
+		text-align: center;
+		padding: 0px;
+		a{
+			@include transition(all .1s linear);
+			font-size: 30px;
+			color: #333;
+			&:hover{
+				color: $oceanblue;
+			}
+		}
+	}
+	h2.topic_header{
+		@include box-sizing(border-box);
+		display: block;
+		margin: 0;
+		text-align: center;
+		padding: 0px;
+		font-size: 28px;
+		margin-bottom: 10px;
+	}
+	h2.breadcrumb{
+		@include box-sizing(border-box);
+		display: block;
+		font-size: 9px;
+		@include tablet{
+			font-size: 18px;
+		}
+		text-align: left;
+		margin-top: 10px;
+		a{
+			@include transition(all .1s linear);
+			@include box-sizing(border-box);
+			color: #333;
+			font-size: 11px;
+			@include tablet{
+				font-size: 22px;
+			}
+			text-decoration: none;
+			border: 5px solid #fff;
+			padding: 2px;
+			&:hover{
+				color: #fff;
+				background-color: #333;
+				border: 5px solid #333;
+			}
+		} 
+	}
+}
+
+.post{
+	@include display(flex);
+	@include flex-direction(column);
+	// @include align-items(stretch);
+	margin-bottom: 10px;
+	position: relative;
+	@include tablet{
+		@include flex-direction(row);
+	}
+	.user{
+		text-align: center;
+		display: block;
+		img{
+			border-radius: 10px;
+		}
+		p{
+			margin-bottom: 0;
+		}
+		a{
+			color: #333;
+			text-decoration: none;
+			border: 2px solid #333;
+			width: 90%;
+			margin: auto;
+			display: block;
+			@include box-sizing(border-box);
+			@include transition(all .2s linear);
+			margin-bottom: 5px;
+			&:hover{
+				background-color: #333;
+				border-color: #333;
+				color: #fff;
+			}
+		}
+		.username{
+			a{
+				border-color: transparent;
+				text-decoration: underline;
+				&:hover{
+					text-decoration: none;
+				}
+			}
+			p{
+				font-size: 15px;
+				margin-bottom: 10px;
+			}
+		}
+		@include tablet{
+			width: 150px;
+		}
+	}
+	.content{
+		background-color: #f7f7f7;
+		display: block;
+		position: relative;
+		width: 100%;
+		padding: 10px;
+		overflow: hidden;
+		p{
+			display: block;
+			text-indent: 0;
+			margin-bottom: 40px;
+		}
+		img{
+			width: 100%;
+			height: auto;
+		}
+		@include tablet{
+			@include flex(1);
+		}
+	}
+}

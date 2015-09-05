@@ -1,11 +1,8 @@
 <span class="login">
-  <h2>Register for</br>Iron Legacy</h2>
-  <h3>What does Registering do for you?</h3>
-  <p>Once you've registered for our website, you'll have full access to our Forums and the ability to Apply for the guild. You'll also gain access to contribute to our website by providing valuable feedback with the feedback button in the menu.</p>
-  <h3>Applying for the Guild</h3>
-  <p>Once you've confirmed your account, head on over to the forums and apply under "Applications". There's even a template to help you get started!</p>
-<!--   <a id="appdownload" download href="../ApplicationTemplate_IronLegacy.doc">Download Application Template</a> -->
-
+  <div class="image_highlight">
+    <%= image_tag("bear-paw.svg")  %>
+  </div>
+<h2>Join the Division</h2>
 <div class="form">
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -29,7 +26,7 @@
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
-    <div class="field">
+    <div class="field" style="margin-bottom: 5px;">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
@@ -39,7 +36,7 @@
     </div>
   <% end %>
 
-  <p class="links">Already have an Account? <%= render "devise/shared/links" %></p>
+  <p class="links"><%= render "devise/shared/links" %></p>
 
 </div>
 </span>
